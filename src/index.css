@@ -5,5 +5,10 @@
 }
 
 body {
-  background-color: black;
+  color: #e6e5ea;
+  background-color: #08070b;
+  font-family: "JetBrains Mono";
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
