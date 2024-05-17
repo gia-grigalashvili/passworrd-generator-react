@@ -1,8 +1,10 @@
 import styled from "styled-components";
+import copyimg from "/public/images/icon-copy.svg";
 function Copuheader() {
   return (
     <Copypass>
       <h2 className="password">gia</h2>
+      <img className="copy-img" src={copyimg} alt="" />
     </Copypass>
   );
 }
@@ -22,6 +24,10 @@ const Copypass = styled.div`
     mix-blend-mode: normal;
     opacity: 0.25;
     color: #f8f8f8;
+  }
+  .copy-img {
+    width: 17.5px;
+    height: 20px;
   }
 `;
 export default Copuheader;
