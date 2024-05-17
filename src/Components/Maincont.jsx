@@ -1,9 +1,11 @@
 import styled from "styled-components";
 import Sliderconteiner from "./Sliderconteiner";
+import Checkbox from "./Checkbox";
 function Maincont() {
   return (
     <Mainconts>
       <Sliderconteiner />
+      <Checkbox />
     </Mainconts>
   );
 }
