@@ -1,7 +1,11 @@
 import styled from "styled-components";
-
+import Sliderconteiner from "./Sliderconteiner";
 function Maincont() {
-  return <Mainconts>Main-cont</Mainconts>;
+  return (
+    <Mainconts>
+      <Sliderconteiner />
+    </Mainconts>
+  );
 }
 const Mainconts = styled.div`
   background-color: #24232c;

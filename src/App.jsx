@@ -3,13 +3,14 @@ import Name from "./Components/Name";
 import Copyheader from "./Components/Copyheader";
 import styled from "styled-components";
 import Maincont from "./Components/Maincont";
+
 function App() {
   return (
     <>
       <Container>
         <Name />
         <Copyheader />
-        <Maincont />
+        <Maincont></Maincont>
       </Container>
     </>
   );
