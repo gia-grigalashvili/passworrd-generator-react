@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 import { useState } from "react";
 import styled from "styled-components";
 import check from "/public/images/icon-check.svg";
@@ -8,20 +9,36 @@ function Checkbox() {
     "Include Numbers",
     "Include Symbols",
   ];
-  const [showe, setshowe] = useState();
+  // const [showe, setshowe] = useState();
+
+  const [checkedState, setCheckedState] = useState(
+    new Array(array.length).fill(false)
+  );
+
+  const handleCheckboxChange = (index) => {
+    const update = [...checkedState];
+    update[index] = !update[index];
+    setCheckedState(update);
+  };
 
   return (
-    <Checkboxmain>
-      {}
-      {array.map((Text, index) => (
+    <Checkboxmain handleCheckboxChange={handleCheckboxChange}>
+      {array.map((text, index) => (
         <div key={index} className="cont">
           <label className="container">
-            <input type="checkbox" className="check uppercase" />
+            <input
+              type="checkbox"
+              className="check"
+              onChange={() => handleCheckboxChange(index)}
+              checked={checkedState[index]}
+            />
             <span className="checkmark">
-              <img src={check} alt="" />
+              {checkedState[index] && (
+                <img src={check} alt="check" className="check-image" />
+              )}
             </span>
           </label>
-          <span className="checkbox-text">{Text}</span>
+          <span className="checkbox-text">{text}</span>
         </div>
       ))}
     </Checkboxmain>
@@ -44,18 +61,21 @@ const Checkboxmain = styled.div`
       height: 18px;
       border: 2px solid rgb(255, 255, 255);
       cursor: pointer;
-
+      background: ${(props) => (props.clicked ? "#fff" : "red")};
       img {
         margin-bottom: 10px;
       }
     }
-    .check:checked + .checkmark {
+    /* .check:checked + .checkmark {
       background-color: #a4ffaf;
       border: 2px solid #a4ffaf;
 
       background-repeat: no-repeat;
       background-size: 17px;
       background-position: center center;
+    } */
+    .check {
+      display: none;
     }
   }
 `;
