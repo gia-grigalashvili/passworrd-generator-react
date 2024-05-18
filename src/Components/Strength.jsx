@@ -1,11 +1,17 @@
 import styled from "styled-components";
 
 function Strength() {
+  const array = ["TOO WEAK!", "WEAK", "MEDIUM", "STRONG"];
   return (
     <Maindiv>
       <p>STRENGTH</p>
       <div className="strength-lvl">
-        <span className="strength-txt">TOO WEAK!</span>
+        {array.map((text, index) => (
+          <span key={index} className="strength-txt">
+            {/* {text} */}
+          </span>
+        ))}
+        <span className="strength-txt"></span>
         <div className="lvl-boxes">
           <div className="box one"></div>
           <div className="box two"></div>
