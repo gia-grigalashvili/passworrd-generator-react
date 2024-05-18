@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-function Strength() {
+function Strength({ checkedState, setCheckedState, handleCheckboxChange }) {
   const array = ["TOO WEAK!", "WEAK", "MEDIUM", "STRONG"];
   return (
     <Maindiv>
@@ -28,7 +28,7 @@ const Maindiv = styled.div`
   align-items: center;
   padding: 14px;
   margin-bottom: 16px;
-  background-color: #18171f;
+  background: #18171f;
   .strength-lvl {
     display: flex;
     align-items: center;
@@ -38,8 +38,9 @@ const Maindiv = styled.div`
       gap: 8px;
     }
     .box {
-      width: 6px;
-      height: 24px;
+      width: 10px;
+      height: 28px;
+      flex-shrink: 0;
       border: 2px solid #e6e5ea;
     }
   }
@@ -57,6 +58,9 @@ const Maindiv = styled.div`
     background-color: #fff;
   }
   .three {
+    background-color: #fff;
+  }
+  .four {
     background-color: #fff;
   }
 `;
