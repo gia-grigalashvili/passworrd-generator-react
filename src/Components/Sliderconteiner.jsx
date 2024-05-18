@@ -1,14 +1,23 @@
+import { useState } from "react";
 import styled from "styled-components";
 
 function Sliderconteiner() {
+  const [showe, setshowe] = useState(0);
   return (
     <Slidermain>
       <div className="slider-text">
         <span>Character Length</span>
-        <p className="slider-value">4</p>
+        <p className="slider-value">{showe}</p>
       </div>
       <div className="slider1">
-        <input type="range" min="0" max="20" value={0} className="slider" />
+        <input
+          type="range"
+          min="0"
+          max="20"
+          onChange={(e) => setshowe(e.target.value)}
+          value={showe}
+          className="slider"
+        />
       </div>
     </Slidermain>
   );

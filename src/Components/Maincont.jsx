@@ -2,12 +2,14 @@ import styled from "styled-components";
 import Sliderconteiner from "./Sliderconteiner";
 import Checkbox from "./Checkbox";
 import Strength from "./Strength";
+import Generator from "./Generator";
 function Maincont() {
   return (
     <Mainconts>
       <Sliderconteiner />
       <Checkbox />
       <Strength />
+      <Generator />
     </Mainconts>
   );
 }

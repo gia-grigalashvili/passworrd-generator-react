@@ -1,4 +1,3 @@
-import React from "react";
 import styled from "styled-components";
 import arrow from "/public/images/icon-arrow-right.svg";
 function Generator() {
