@@ -1,10 +1,11 @@
 import { useState } from "react";
 import styled from "styled-components";
 
-function Sliderconteiner() {
-  const [showe, setshowe] = useState(0);
+function Slidercontainer() {
+  const [showe, setShowe] = useState(0);
+
   return (
-    <Slidermain>
+    <Slidermain showe={showe}>
       <div className="slider-text">
         <span>Character Length</span>
         <p className="slider-value">{showe}</p>
@@ -13,8 +14,9 @@ function Sliderconteiner() {
         <input
           type="range"
           min="0"
+          step="1"
           max="20"
-          onChange={(e) => setshowe(e.target.value)}
+          onChange={(e) => setShowe(parseInt(e.target.value, 10))}
           value={showe}
           className="slider"
         />
@@ -34,11 +36,25 @@ const Slidermain = styled.div`
   .slider {
     appearance: none;
     width: 100%;
-    height: 8px;
+    height: 10px;
     border-radius: 5px;
-    background: white;
+    background: ${(props) =>
+      `linear-gradient(to right, #A4FFAF ${props.showe * 5}%, #ddd ${
+        props.showe * 5
+      }%)`};
     outline: none;
     margin: 5px 0;
+
+    &::-webkit-slider-thumb {
+      appearance: none;
+      width: 28px;
+      height: 28px;
+      border-radius: 50%;
+      background: #ffffff;
+      border: 2px solid #ffffff;
+      cursor: pointer;
+    }
   }
 `;
-export default Sliderconteiner;
+
+export default Slidercontainer;
