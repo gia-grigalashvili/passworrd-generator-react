@@ -61,22 +61,20 @@ const Checkboxmain = styled.div`
       height: 18px;
       border: 2px solid rgb(255, 255, 255);
       cursor: pointer;
-      background: ${(props) => (props.clicked ? "#fff" : "red")};
-      img {
-        margin-bottom: 10px;
-      }
+      /* background: ${(props) => (props.checked ? "red" : "")};
+      img { */
     }
-    /* .check:checked + .checkmark {
-      background-color: #a4ffaf;
-      border: 2px solid #a4ffaf;
+  }
+  .check:checked + .checkmark {
+    background-color: #a4ffaf;
+    border: 2px solid #a4ffaf;
 
-      background-repeat: no-repeat;
-      background-size: 17px;
-      background-position: center center;
-    } */
-    .check {
-      display: none;
-    }
+    background-repeat: no-repeat;
+    background-size: 17px;
+    background-position: center center;
+  }
+  .check {
+    display: none;
   }
 `;
 export default Checkbox;
