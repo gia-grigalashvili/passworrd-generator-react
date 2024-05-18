@@ -32,6 +32,16 @@ const Slidermain = styled.div`
     align-items: center;
     justify-content: space-between;
     margin-bottom: 23px;
+    p {
+      color: #a4ffaf;
+      font-feature-settings: "clig" off, "liga" off;
+
+      font-family: "JetBrains Mono";
+      font-size: 22px;
+      font-style: normal;
+      font-weight: 700;
+      line-height: normal;
+    }
   }
   .slider {
     appearance: none;
