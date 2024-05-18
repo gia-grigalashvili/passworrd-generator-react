@@ -1,5 +1,6 @@
+import { useState } from "react";
 import styled from "styled-components";
-
+import check from "/public/images/icon-check.svg";
 function Checkbox() {
   const array = [
     "Include Uppercase Letters",
@@ -7,21 +8,18 @@ function Checkbox() {
     "Include Numbers",
     "Include Symbols",
   ];
+  const [showe, setshowe] = useState();
+
   return (
     <Checkboxmain>
-      <div className="cont">
-        <label className="container">
-          <input type="checkbox" className="check uppercase" />
-          <span className="checkmark"></span>
-        </label>
-        <span className="checkbox-text">Include Uppercase Letters</span>
-      </div>
       {}
       {array.map((Text, index) => (
         <div key={index} className="cont">
           <label className="container">
             <input type="checkbox" className="check uppercase" />
-            <span className="checkmark"></span>
+            <span className="checkmark">
+              <img src={check} alt="" />
+            </span>
           </label>
           <span className="checkbox-text">{Text}</span>
         </div>
@@ -46,6 +44,10 @@ const Checkboxmain = styled.div`
       height: 18px;
       border: 2px solid rgb(255, 255, 255);
       cursor: pointer;
+
+      img {
+        margin-bottom: 10px;
+      }
     }
     .check:checked + .checkmark {
       background-color: #a4ffaf;

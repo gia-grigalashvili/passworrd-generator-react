@@ -2,13 +2,13 @@ import { useState } from "react";
 import styled from "styled-components";
 
 function Slidercontainer() {
-  const [showe, setShowe] = useState(0);
+  const [change, setchange] = useState(0);
 
   return (
-    <Slidermain showe={showe}>
+    <Slidermain change={change}>
       <div className="slider-text">
         <span>Character Length</span>
-        <p className="slider-value">{showe}</p>
+        <p className="slider-value">{change}</p>
       </div>
       <div className="slider1">
         <input
@@ -16,8 +16,8 @@ function Slidercontainer() {
           min="0"
           step="1"
           max="20"
-          onChange={(e) => setShowe(parseInt(e.target.value, 10))}
-          value={showe}
+          onChange={(e) => setchange(parseInt(e.target.value, 10))}
+          value={change}
           className="slider"
         />
       </div>
@@ -39,8 +39,8 @@ const Slidermain = styled.div`
     height: 10px;
     border-radius: 5px;
     background: ${(props) =>
-      `linear-gradient(to right, #A4FFAF ${props.showe * 5}%, #ddd ${
-        props.showe * 5
+      `linear-gradient(to right, #A4FFAF ${props.change * 5}%, #ddd ${
+        props.change * 5
       }%)`};
     outline: none;
     margin: 5px 0;
