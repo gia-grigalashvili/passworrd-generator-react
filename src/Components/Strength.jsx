@@ -1,22 +1,51 @@
+/* eslint-disable react/prop-types */
 import styled from "styled-components";
 
-function Strength({ checkedState, setCheckedState, handleCheckboxChange }) {
-  const array = ["TOO WEAK!", "WEAK", "MEDIUM", "STRONG"];
+function Strength({ checkedState }) {
+  const levels = ["TOO WEAK!", "WEAK", "MEDIUM", "STRONG"];
+
+  const getStrengthLevel = () => {
+    const activeCount = checkedState.filter(Boolean).length;
+    switch (activeCount) {
+      case 0:
+        return levels[""];
+      case 1:
+        return levels[0];
+      case 2:
+        return levels[1];
+      case 3:
+        return levels[2];
+      case 4:
+        return levels[3];
+    }
+  };
+
+  const strengthLevel = getStrengthLevel();
+  // const changeActive = () => {
+  //   const arr = ["TOO WEAK!", "WEAK", "MEDIUM", "STRONG"];
+  //   const filters = [...arr];
+  //   if (filters === "TOO WEAK!") {
+  //     return arr.filter((text) => !text.array);
+  //   } else if (filters === "WEAK") {
+  //     return arr.filter((text) => text.array);
+  //   } else if (filters === "MEDIUM") {
+  //     return arr.filter((text) => text.array);
+  //   } else if (filters === "STRONG") {
+  //     return arr.filter((text) => text.array);
+  //   } else {
+  //     return filter;
+  //   }
+  // };
   return (
     <Maindiv>
       <p>STRENGTH</p>
       <div className="strength-lvl">
-        {array.map((text, index) => (
-          <span key={index} className="strength-txt">
-            {/* {text} */}
-          </span>
-        ))}
-        <span className="strength-txt"></span>
+        <span className="strength-txt">{strengthLevel}</span>
         <div className="lvl-boxes">
-          <div className="box one"></div>
-          <div className="box two"></div>
-          <div className="box three"></div>
-          <div className="box four"></div>
+          <div className={`box one  ${strengthLevel === levels[0]}`}></div>
+          <div className={`box  two ${strengthLevel === levels[1]}`}></div>
+          <div className={`box three ${strengthLevel === levels[2]}`}></div>
+          <div className={`box four ${strengthLevel === levels[3]}`}></div>
         </div>
       </div>
     </Maindiv>
@@ -41,7 +70,6 @@ const Maindiv = styled.div`
       width: 10px;
       height: 28px;
       flex-shrink: 0;
-      border: 2px solid #e6e5ea;
     }
   }
 
@@ -52,13 +80,14 @@ const Maindiv = styled.div`
     color: #e6e5ea;
   }
   .one {
-    background-color: #fff;
+    background-color: ${(props) =>
+      props.strengthLevel ? "#fff" : "rebeccapurple"};
   }
   .two {
-    background-color: #fff;
+    background-color: #ffffff;
   }
   .three {
-    background-color: #fff;
+    background-color: #ffffff;
   }
   .four {
     background-color: #fff;

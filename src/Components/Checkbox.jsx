@@ -2,35 +2,31 @@
 import { useState } from "react";
 import styled from "styled-components";
 import check from "/public/images/icon-check.svg";
-function Checkbox() {
-  const array = [
+
+function Checkbox({ checkedState, setCheckedState }) {
+  const options = [
     "Include Uppercase Letters",
     "Include Lowercase Letters",
     "Include Numbers",
     "Include Symbols",
   ];
-  // const [showe, setshowe] = useState();
-
-  const [checkedState, setCheckedState] = useState(
-    new Array(array.length).fill(false)
-  );
 
   const handleCheckboxChange = (index) => {
-    const update = [...checkedState];
-    update[index] = !update[index];
-    setCheckedState(update);
+    const updatedCheckedState = [...checkedState];
+    updatedCheckedState[index] = !updatedCheckedState[index];
+    setCheckedState(updatedCheckedState);
   };
 
   return (
-    <Checkboxmain handleCheckboxChange={handleCheckboxChange}>
-      {array.map((text, index) => (
+    <Checkboxmain>
+      {options.map((text, index) => (
         <div key={index} className="cont">
           <label className="container">
             <input
               type="checkbox"
               className="check"
-              onChange={() => handleCheckboxChange(index)}
               checked={checkedState[index]}
+              onChange={() => handleCheckboxChange(index)}
             />
             <span className="checkmark">
               {checkedState[index] && (

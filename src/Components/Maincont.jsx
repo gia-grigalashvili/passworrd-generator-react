@@ -1,14 +1,19 @@
+/* eslint-disable react/prop-types */
+import { useState } from "react";
 import styled from "styled-components";
 import Sliderconteiner from "./Sliderconteiner";
 import Checkbox from "./Checkbox";
 import Strength from "./Strength";
 import Generator from "./Generator";
+
 function Maincont() {
+  const [checkedState, setCheckedState] = useState(new Array(4).fill(false));
+
   return (
     <Mainconts>
       <Sliderconteiner />
-      <Checkbox />
-      <Strength />
+      <Checkbox checkedState={checkedState} setCheckedState={setCheckedState} />
+      <Strength checkedState={checkedState} />
       <Generator />
     </Mainconts>
   );
