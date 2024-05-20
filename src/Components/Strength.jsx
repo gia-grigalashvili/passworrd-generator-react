@@ -1,5 +1,4 @@
 /* eslint-disable react/prop-types */
-import { useState } from "react";
 import styled from "styled-components";
 
 function Strength({ checkedState }) {
@@ -9,15 +8,17 @@ function Strength({ checkedState }) {
     const activeCount = checkedState.filter(Boolean).length;
     switch (activeCount) {
       case 0:
-        return levels[0];
+        return "";
       case 1:
-        return levels[1];
+        return levels[0];
       case 2:
-        return levels[2];
+        return levels[1];
       case 3:
+        return levels[2];
+      case 4:
         return levels[3];
       default:
-        return levels[0];
+        return "";
     }
   };
 
@@ -51,14 +52,17 @@ const Maindiv = styled.div`
   padding: 14px;
   margin-bottom: 16px;
   background: #18171f;
+
   .strength-lvl {
     display: flex;
     align-items: center;
     gap: 16px;
+
     .lvl-boxes {
       display: flex;
       gap: 8px;
     }
+
     .box {
       width: 10px;
       height: 28px;

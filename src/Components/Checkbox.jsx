@@ -18,6 +18,7 @@ function Checkbox({ setCheckedState, checkedState }) {
 
     setCheckedState(updatedCheckedState);
   };
+
   return (
     <Checkboxmain>
       {options.map((text, index) => (
