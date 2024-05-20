@@ -9,26 +9,34 @@ function Strength({ checkedState }) {
     const activeCount = checkedState.filter(Boolean).length;
     switch (activeCount) {
       case 0:
-        return levels[""];
-      case 1:
         return levels[0];
-      case 2:
+      case 1:
         return levels[1];
-      case 3:
+      case 2:
         return levels[2];
-      case 4:
+      case 3:
         return levels[3];
+      default:
+        return levels[0];
     }
   };
+
+  const strengthLevel = getStrengthLevel();
+  const activeCount = checkedState.filter(Boolean).length;
 
   return (
     <Maindiv>
       <p>STRENGTH</p>
       <div className="strength-lvl">
-        <span className="strength-txt">{getStrengthLevel()}</span>
+        <span className="strength-txt">{strengthLevel}</span>
         <div className="lvl-boxes">
-          {levels.map((index) => (
-            <div key={index} className={`box one two three four`}></div>
+          {levels.map((_, index) => (
+            <div
+              key={index}
+              className={`box ${
+                index < activeCount ? `level-${activeCount}` : "inactive"
+              }`}
+            ></div>
           ))}
         </div>
       </div>
@@ -64,20 +72,21 @@ const Maindiv = styled.div`
     text-transform: uppercase;
     color: #e6e5ea;
   }
-  .one {
-    background-color: ${(props) =>
-      props.strengthLevel ? "#fff" : "rebeccapurple"};
+
+  .inactive {
+    background: white;
   }
-  .two {
-    background-color: ${(props) => (props.strengthLevel ? "#fff" : "green")};
+  .level-1 {
+    background: red;
   }
-  .three {
-    background-color: ${(props) =>
-      props.strengthLevel ? "#2884cf" : "#793b3b"};
+  .level-2 {
+    background: #fb7c58;
   }
-  .four {
-    background-color: ${(props) =>
-      props.strengthLevel ? "#000000" : "#3b4a79"};
+  .level-3 {
+    background: #f8cd65;
+  }
+  .level-4 {
+    background: #a4ffaf;
   }
 `;
 
