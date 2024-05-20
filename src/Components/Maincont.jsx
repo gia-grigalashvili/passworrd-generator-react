@@ -7,12 +7,13 @@ import Strength from "./Strength";
 import Generator from "./Generator";
 
 function Maincont() {
+  // const [checkedState, setCheckedState] = useState(new Array(4).fill(false));
+  const [filter, setfilter] = useState("");
   const [checkedState, setCheckedState] = useState(new Array(4).fill(false));
-
   return (
     <Mainconts>
       <Sliderconteiner />
-      <Checkbox checkedState={checkedState} setCheckedState={setCheckedState} />
+      <Checkbox setCheckedState={setCheckedState} checkedState={checkedState} />
       <Strength checkedState={checkedState} />
       <Generator />
     </Mainconts>

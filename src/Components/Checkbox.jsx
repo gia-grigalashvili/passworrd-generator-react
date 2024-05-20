@@ -1,9 +1,9 @@
 /* eslint-disable react/prop-types */
-import { useState } from "react";
+// import { useState } from "react";
 import styled from "styled-components";
-import check from "/public/images/icon-check.svg";
+// import check from "/public/images/icon-check.svg";
 
-function Checkbox({ checkedState, setCheckedState }) {
+function Checkbox({ setCheckedState, checkedState }) {
   const options = [
     "Include Uppercase Letters",
     "Include Lowercase Letters",
@@ -12,11 +12,12 @@ function Checkbox({ checkedState, setCheckedState }) {
   ];
 
   const handleCheckboxChange = (index) => {
-    const updatedCheckedState = [...checkedState];
-    updatedCheckedState[index] = !updatedCheckedState[index];
+    const updatedCheckedState = checkedState.map((item, idx) =>
+      idx === index ? !item : item
+    );
+
     setCheckedState(updatedCheckedState);
   };
-
   return (
     <Checkboxmain>
       {options.map((text, index) => (
@@ -24,15 +25,10 @@ function Checkbox({ checkedState, setCheckedState }) {
           <label className="container">
             <input
               type="checkbox"
-              className="check"
-              checked={checkedState[index]}
               onChange={() => handleCheckboxChange(index)}
+              className="check"
             />
-            <span className="checkmark">
-              {checkedState[index] && (
-                <img src={check} alt="check" className="check-image" />
-              )}
-            </span>
+            <span className="checkmark"></span>
           </label>
           <span className="checkbox-text">{text}</span>
         </div>
@@ -57,14 +53,12 @@ const Checkboxmain = styled.div`
       height: 18px;
       border: 2px solid rgb(255, 255, 255);
       cursor: pointer;
-      /* background: ${(props) => (props.checked ? "red" : "")};
-      img { */
     }
   }
   .check:checked + .checkmark {
     background-color: #a4ffaf;
     border: 2px solid #a4ffaf;
-
+    background-image: url("./images/icon-check.svg");
     background-repeat: no-repeat;
     background-size: 17px;
     background-position: center center;

@@ -1,4 +1,5 @@
 /* eslint-disable react/prop-types */
+import { useState } from "react";
 import styled from "styled-components";
 
 function Strength({ checkedState }) {
@@ -20,36 +21,21 @@ function Strength({ checkedState }) {
     }
   };
 
-  // const strengthLevel = getStrengthLevel();
-  // const changeActive = () => {
-  //   const arr = ["TOO WEAK!", "WEAK", "MEDIUM", "STRONG"];
-  //   const filters = [...arr];
-  //   if (filters === "TOO WEAK!") {
-  //     return arr.filter((text) => !text.array);
-  //   } else if (filters === "WEAK") {
-  //     return arr.filter((text) => text.array);
-  //   } else if (filters === "MEDIUM") {
-  //     return arr.filter((text) => text.array);
-  //   } else if (filters === "STRONG") {
-  //     return arr.filter((text) => text.array);
-  //   } else {
-  //     return filter;
-  //   }
-  // };
   return (
     <Maindiv>
       <p>STRENGTH</p>
       <div className="strength-lvl">
         <span className="strength-txt">{getStrengthLevel()}</span>
         <div className="lvl-boxes">
-          {levels.map((level, index) => (
-            <div key={index} className={`box one  two three four`}></div>
+          {levels.map((index) => (
+            <div key={index} className={`box one two three four`}></div>
           ))}
         </div>
       </div>
     </Maindiv>
   );
 }
+
 const Maindiv = styled.div`
   display: flex;
   justify-content: space-between;
@@ -83,16 +69,16 @@ const Maindiv = styled.div`
       props.strengthLevel ? "#fff" : "rebeccapurple"};
   }
   .two {
-    background-color: ${(props) =>
-      props.strengthLevel ? "#fff" : "rebeccapurple"};
+    background-color: ${(props) => (props.strengthLevel ? "#fff" : "green")};
   }
   .three {
     background-color: ${(props) =>
-      props.strengthLevel ? "#fff" : "rebeccapurple"};
+      props.strengthLevel ? "#2884cf" : "#793b3b"};
   }
   .four {
     background-color: ${(props) =>
-      props.strengthLevel ? "#fff" : "rebeccapurple"};
+      props.strengthLevel ? "#000000" : "#3b4a79"};
   }
 `;
+
 export default Strength;
