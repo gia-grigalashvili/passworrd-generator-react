@@ -1,9 +1,9 @@
 import styled from "styled-components";
 import copyimg from "/public/images/icon-copy.svg";
-function Copuheader() {
+function Copuheader({ password }) {
   return (
     <Copypass>
-      <h2 className="password">gia</h2>
+      <h2 className="password">{password}</h2>
       <img className="copy-img" src={copyimg} alt="" />
     </Copypass>
   );

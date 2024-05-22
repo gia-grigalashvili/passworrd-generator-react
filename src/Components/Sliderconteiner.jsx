@@ -1,14 +1,11 @@
-import { useState } from "react";
 import styled from "styled-components";
 
-function Slidercontainer() {
-  const [change, setchange] = useState(0);
-
+function Sliderconteiner({ length, setLength }) {
   return (
-    <Slidermain change={change}>
+    <Slidermain>
       <div className="slider-text">
         <span>Character Length</span>
-        <p className="slider-value">{change}</p>
+        <p className="slider-value">{length}</p>
       </div>
       <div className="slider1">
         <input
@@ -16,8 +13,8 @@ function Slidercontainer() {
           min="0"
           step="1"
           max="20"
-          onChange={(e) => setchange(parseInt(e.target.value, 10))}
-          value={change}
+          onChange={(e) => setLength(parseInt(e.target.value, 10))}
+          value={length}
           className="slider"
         />
       </div>
@@ -35,7 +32,6 @@ const Slidermain = styled.div`
     p {
       color: #a4ffaf;
       font-feature-settings: "clig" off, "liga" off;
-
       font-family: "JetBrains Mono";
       font-size: 22px;
       font-style: normal;
@@ -49,22 +45,21 @@ const Slidermain = styled.div`
     height: 10px;
     border-radius: 5px;
     background: ${(props) =>
-      `linear-gradient(to right, #A4FFAF ${props.change * 5}%, #ddd ${
-        props.change * 5
+      `linear-gradient(to right, #A4FFAF ${props.length * 5}%, #490000 ${
+        props.setlength * 5
       }%)`};
     outline: none;
     margin: 5px 0;
-
     &::-webkit-slider-thumb {
       appearance: none;
       width: 28px;
       height: 28px;
       border-radius: 50%;
-      background: #ffffff;
+      background: #694949;
       border: 2px solid #ffffff;
       cursor: pointer;
     }
   }
 `;
 
-export default Slidercontainer;
+export default Sliderconteiner;

@@ -1,40 +1,33 @@
 /* eslint-disable react/prop-types */
 import { useState } from "react";
 import styled from "styled-components";
-import Sliderconteiner from "./Sliderconteiner";
+import Slidercontainer from "./Sliderconteiner";
 import Checkbox from "./Checkbox";
 import Strength from "./Strength";
 import Generator from "./Generator";
-import Copyheader from "./Copyheader";
 
-function Maincont() {
-  // const [checkedState, setCheckedState] = useState(new Array(4).fill(false));
-
+function Maincont({ setPassword }) {
   const [checkedState, setCheckedState] = useState(new Array(4).fill(false));
-  const [length, setLength] = useState(10);
-  const [password, setPassword] = useState("");
+  const [length, setLength] = useState(10); // Default length
 
   const generatePassword = () => {
-    const characterSets = [
-      "ABCDEFGHIJKLMNOPQRSTUVWXYZ", // Uppercase
-      "abcdefghijklmnopqrstuvwxyz", // Lowercase
-      "0123456789", // Numbers
-      "!@#$%^&*()_+~`|}{[]:;?><,./-=", // Symbols
-    ];
+    const upperCaseLetters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+    const lowerCaseLetters = "abcdefghijklmnopqrstuvwxyz";
+    const numbers = "0123456789";
+    const symbols = "!@#$%^&*()_+[]{}|;:,.<>?";
 
-    let availableCharacters = "";
-    checkedState.forEach((checked, index) => {
-      if (checked) availableCharacters += characterSets[index];
-    });
+    let characterPool = "";
+    if (checkedState[0]) characterPool += upperCaseLetters;
+    if (checkedState[1]) characterPool += lowerCaseLetters;
+    if (checkedState[2]) characterPool += numbers;
+    if (checkedState[3]) characterPool += symbols;
 
-    if (availableCharacters.length === 0) return;
+    if (characterPool.length === 0) return "";
 
     let generatedPassword = "";
     for (let i = 0; i < length; i++) {
-      const randomIndex = Math.floor(
-        Math.random() * availableCharacters.length
-      );
-      generatedPassword += availableCharacters[randomIndex];
+      const randomIndex = Math.floor(Math.random() * characterPool.length);
+      generatedPassword += characterPool[randomIndex];
     }
 
     setPassword(generatedPassword);
@@ -42,15 +35,19 @@ function Maincont() {
 
   return (
     <Mainconts>
-      <Sliderconteiner length={length} setLength={setLength} />
+      {/* <Copuheader password={password} /> */}
+      <Slidercontainer length={length} setLength={setLength} />
       <Checkbox setCheckedState={setCheckedState} checkedState={checkedState} />
       <Strength checkedState={checkedState} />
       <Generator generatePassword={generatePassword} />
+      {/* <h2 className="password">{password}</h2> */}
     </Mainconts>
   );
 }
+
 const Mainconts = styled.div`
   background-color: #24232c;
   padding: 21px 16px 16px;
 `;
+
 export default Maincont;

@@ -1,13 +1,15 @@
 import styled from "styled-components";
 import arrow from "/public/images/icon-arrow-right.svg";
-function Generator() {
+
+function Generator({ generatePassword }) {
   return (
-    <Generatee>
+    <Generatee onClick={generatePassword}>
       GENERATE
-      <img src={arrow} alt="icon-arrow-right"></img>
+      <img src={arrow} alt="icon-arrow-right" />
     </Generatee>
   );
 }
+
 const Generatee = styled.button`
   display: flex;
   align-items: center;
@@ -24,4 +26,5 @@ const Generatee = styled.button`
   outline: none;
   border: 0px;
 `;
+
 export default Generator;
